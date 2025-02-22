@@ -41,6 +41,10 @@
       source = ./wezterm;
       recursive = true;
     };
+    "nvim" = {
+      source = ./nvim;
+      recursive = true;
+    };
   };
 
   home.file = {
