@@ -18,7 +18,7 @@
       ];
     };
     homeConfigurations.tompo = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
       modules = [ ./home.nix ];
     };
   };
