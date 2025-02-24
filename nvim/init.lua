@@ -808,6 +808,9 @@ require('lazy').setup({
       require("everforest").setup({
         -- my config here as needed
       })
+
+      -- need to actually load the colorscheme
+      vim.cmd.colorscheme 'everforest'
     end,
   },
 
