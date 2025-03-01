@@ -1,5 +1,6 @@
 -- debug.lua
 --
+-- Came from Kickstart, not activated. Leaving in bc I'll want it one day.
 -- Shows how to use the DAP plugin to debug your code.
 --
 -- Primarily focused on configuring the debugger for Go, but can

@@ -1,5 +1,7 @@
 -- autopairs
 -- https://github.com/windwp/nvim-autopairs
+--
+-- This file came from the Kickstart plugins. It is currently activated.
 
 return {
   'windwp/nvim-autopairs',
