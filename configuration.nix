@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
     ];
 
   # Bootloader.
@@ -101,15 +100,14 @@
     ];
   };
 
-  home-manager = {
-    # also pass inputs to home-manager modules
-    # TODO: understand if this is necessary for our use currently
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "tompo" = import ./home.nix;
-    };
-  };
-
+  #   # also pass inputs to home-manager modules
+  #   # TODO: understand if this is necessary for our use currently
+  #   extraSpecialArgs = { inherit inputs; };
+  #   users = {
+  #     "tompo" = import ./home.nix;
+  #   };
+  # };
+  #
   # Install firefox.
   programs.firefox.enable = true;
 
