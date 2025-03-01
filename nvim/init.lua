@@ -746,11 +746,6 @@ require('lazy').setup({
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
 
-          -- Accept ([y]es) the completion.
-          --  This will auto-import if your LSP supports it.
-          --  This will expand snippets if the LSP sent a snippet.
-          -- ['<C-y>'] = cmp.mapping.confirm { select = true },
-
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
           ['<CR>'] = cmp.mapping.confirm { select = true },
@@ -835,6 +830,8 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      require('mini.move').setup()
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
@@ -885,12 +882,13 @@ require('lazy').setup({
   -- I refactored this to have all plugins in the same dir.
   -- Deactivated ones are from Kickstart, and should reactivate when uncommented.
 
-  require 'lua.plugins.autopairs',
-  require 'lua.plugins.indent_line',
-  -- require 'lua.plugins.lint',
-  -- require 'lua.plugins.debug',
-  -- require 'lua.plugins.neo-tree',
-  -- require 'lua.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'plugins.autopairs',
+  require 'plugins.indent_line',
+  require 'plugins.obsidian',
+  -- require 'plugins.lint',
+  -- require 'plugins.debug',
+  -- require 'plugins.neo-tree',
+  -- require 'plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
