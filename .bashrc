@@ -6,7 +6,7 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+alias ll="ls -la"
 
-function hms() {
-	home-manager switch --flake ~/dotfiles
-}
+alias nrs="nix-rebuild switch --flake ~/dotfiles"
+alias hms="home-manager switch --flake ~/dotfiles"
