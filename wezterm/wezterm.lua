@@ -7,5 +7,8 @@ local config = wezterm.config_builder()
 config.color_scheme = 'Everforest Dark (Gogh)'
 config.font = wezterm.font('Iosevka Nerd Font')
 
+-- launches an interactive bash shell by default, so that .bashrc gets sourced.
+config.default_prog = { 'bash', '-i' }
+
 -- finally, return the built config to Wezterm
 return config
