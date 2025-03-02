@@ -1,3 +1,7 @@
+export EDITOR=nvim
+export TERMINAL="wezterm"
+export BROWSER="firefox"
+
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
