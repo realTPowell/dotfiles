@@ -25,7 +25,7 @@ return {
         date_format = "%Y-%m-%d",
         time_format = "%H:%M",
       },
-      
+
       picker = {
         -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
         name = "telescope.nvim",
@@ -44,7 +44,9 @@ return {
           insert_tag = "<C-l>",
         },
       },
-      ui.enable = false,
+      ui = {
+        enable = false
+      },
     },
   },
   {

@@ -45,6 +45,10 @@
       source = ./nvim;
       recursive = true;
     };
+    "yazi" = {
+      source = ./yazi;
+      recursive = true;
+    };
   };
 
   home.file = {
