@@ -4,7 +4,7 @@ local wezterm = require('wezterm')
 local config = wezterm.config_builder()
 
 -- apply config choices
-config.color_scheme = 'Everforest Dark (Gogh)'
+config.color_scheme = 'Everforest Dark Medium (Gogh)'
 config.font = wezterm.font('Iosevka Nerd Font')
 
 -- launches an interactive bash shell by default, so that .bashrc gets sourced.
