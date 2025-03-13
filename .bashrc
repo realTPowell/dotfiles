@@ -11,6 +11,7 @@ function y() {
 	rm -f -- "$tmp"
 }
 alias ll="ls -la"
+alias oo="cd ~/Documents/TRPMain"
 
 alias nrs="nix-rebuild switch --flake ~/dotfiles"
 alias hms="home-manager switch --flake ~/dotfiles"
