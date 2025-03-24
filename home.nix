@@ -28,6 +28,7 @@
     # # fonts?
     (pkgs.nerdfonts.override { fonts = [ "Iosevka" "IosevkaTerm" ]; })
     pkgs.wezterm
+    pkgs.zathura
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -47,6 +48,10 @@
     };
     "yazi" = {
       source = ./yazi;
+      recursive = true;
+    };
+    "zathura" = {
+      source = ./zathura;
       recursive = true;
     };
   };
