@@ -29,6 +29,7 @@
     (pkgs.nerdfonts.override { fonts = [ "Iosevka" "IosevkaTerm" ]; })
     pkgs.wezterm
     pkgs.zathura
+    pkgs.fluent-reader
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -54,10 +55,20 @@
       source = ./zathura;
       recursive = true;
     };
+    ".bunfig.toml" = {
+      source = ./bun/bunfig.toml;
+    };
   };
 
   home.file = {
     ".bashrc".source = ./.bashrc;
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = "org.pwmt.zathura.desktop";
+    };
   };
 
   

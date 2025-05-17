@@ -1,0 +1,6 @@
+[install]
+# where global installs are placed. forcing this to be in the home directory, as nixos means bun cannot do truly global installs.
+globalDir = "~/.config/bun/install/global"
+
+# where globally available binaries are placed
+globalBinDir = "~/.config/bun/bin"

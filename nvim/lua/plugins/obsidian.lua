@@ -2,8 +2,6 @@ return {
   {
     "epwalsh/obsidian.nvim",
     version = "*",  -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = "markdown",
 
     dependencies = {
       -- Required.
@@ -12,54 +10,57 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
+    
+    keys = {
+      {'<leader>on', ':ObsidianNewFromTemplate <CR>'}
+    }
 
-    config = function ()
-      require("obsidian").setup {
-        workspaces = {
-          {
-            name = "main",
-            path = "~/Documents/TRPMain",
-          },
+    opts = {
+      workspaces = {
+        {
+          name = "main",
+          path = "~/Documents/TRPMain",
         },
+      },
 
-        notes_subdir = "04 - Fleeting/Inbox",
+      notes_subdir = "04 - Fleeting/Inbox",
 
-        template = {
-          folder = "99 - Assets/Templates",
-          date_format = "%Y-%m-%d",
-          time_format = "%H:%M",
+      template = {
+        folder = "99 - Assets/Templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
+      },
+
+      picker = {
+        -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
+        name = "telescope.nvim",
+        -- Optional, configure key mappings for the picker. These are the defaults.
+        -- Not all pickers support all mappings.
+        note_mappings = {
+          -- Create a new note from your query.
+          new = "<C-x>",
+          -- Insert a link to the selected note.
+          insert_link = "<C-l>",
         },
-
-        picker = {
-          -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
-          name = "telescope.nvim",
-          -- Optional, configure key mappings for the picker. These are the defaults.
-          -- Not all pickers support all mappings.
-          note_mappings = {
-            -- Create a new note from your query.
-            new = "<C-x>",
-            -- Insert a link to the selected note.
-            insert_link = "<C-l>",
-          },
-          tag_mappings = {
-            -- Add tag(s) to current note.
-            tag_note = "<C-x>",
-            -- Insert a tag at the current location.
-            insert_tag = "<C-l>",
-          },
+        tag_mappings = {
+          -- Add tag(s) to current note.
+          tag_note = "<C-x>",
+          -- Insert a tag at the current location.
+          insert_tag = "<C-l>",
         },
-        ui = {
-          enable = false
-        }
+      },
+      ui = {
+        enable = false
       }
+    }
 
-      vim.keymap.set("n", "<leader>on", function () 
-        local filename = vim.fn.input("Enter note title:")
-        vim.cmd(":ObsidianNew ".. filename)
-      end,
-      { desc = "[O]bsidian [N]ew Note" }
-      )
-    end
+      -- vim.keymap.set("n", "<leader>on",
+      --   function ()
+      --     local filename = vim.fn.input("Enter note title:")
+      --     vim.cmd(":ObsidianNew ".. filename)
+      --   end,
+      --   { desc = "[O]bsidian [N]ew Note" }
+      -- )
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
