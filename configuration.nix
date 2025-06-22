@@ -126,6 +126,7 @@
     yazi
     git
     docker
+    ripgrep
   #  wget
   ];
 

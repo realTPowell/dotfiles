@@ -10,10 +10,10 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    
+
     keys = {
-      {'<leader>on', ':ObsidianNewFromTemplate <CR>'}
-    }
+      {'<leader>on', ':ObsidianNew <CR>'}
+    },
 
     opts = {
       workspaces = {
