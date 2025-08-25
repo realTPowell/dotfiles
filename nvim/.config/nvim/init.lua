@@ -853,9 +853,9 @@ require('lazy').setup({
   -- I refactored this to have all plugins in the same dir.
   -- Deactivated ones are from Kickstart, and should reactivate when uncommented.
 
-  require 'plugins.autopairs',
-  require 'plugins.indent_line',
-  require 'plugins.obsidian',
+  -- require 'plugins.autopairs',
+  -- require 'plugins.indent_line',
+  -- require 'plugins.obsidian',
   -- require 'plugins.lint',
   -- require 'plugins.debug',
   -- require 'plugins.neo-tree',
