@@ -1,4 +1,3 @@
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -26,6 +25,10 @@ vim.opt.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
+-- tabstops (banishing vim-sleuth)
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -138,8 +141,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
+  'tpope/vim-sleuth',
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -349,6 +351,7 @@ require('lazy').setup({
   },
 
   -- LSP Plugins
+  -- [!note] Lazydev is commented out bc it needs Nvim 0.10.0, which I guess isn't in the stable Ubuntu repos yet?
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
@@ -529,8 +532,8 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
+        astro = {},
+        emmet_language_server = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -540,8 +543,6 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
-        --
-
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -552,7 +553,10 @@ require('lazy').setup({
                 callSnippet = 'Replace',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = {
+                globals = { 'vim' },
+                disable = { 'missing-fields' },
+              },
             },
           },
         },
@@ -629,7 +633,9 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         markdown = { 'prettier' },
-        html = {'prettier'}
+        html = { 'prettier' },
+        javascript = { 'prettier' },
+        astro = { 'prettier', 'prettier-plugin-astro' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -758,9 +764,9 @@ require('lazy').setup({
     lazy = false,
     priority = 1000,
     config = function()
-      require("everforest").setup({
+      require('everforest').setup {
         -- my config here as needed
-      })
+      }
 
       -- need to actually load the colorscheme
       vim.cmd.colorscheme 'everforest'
@@ -815,7 +821,23 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'nix' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'astro',
+        'css',
+        'typescript',
+        'tsx',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -837,15 +859,14 @@ require('lazy').setup({
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
-      require 'colorizer'.setup({
-        'css';
-        'javascript';
-        'html';
-      },
-      {
-        css = true;
+      require('colorizer').setup({
+        'css',
+        'javascript',
+        'html',
+      }, {
+        css = true,
       })
-    end
+    end,
   },
 
   -- NOTE: This is where the Kickstart-provided plugins used to be activated.
@@ -853,7 +874,7 @@ require('lazy').setup({
   -- I refactored this to have all plugins in the same dir.
   -- Deactivated ones are from Kickstart, and should reactivate when uncommented.
 
-  -- require 'plugins.autopairs',
+  require 'plugins.autopairs',
   -- require 'plugins.indent_line',
   -- require 'plugins.obsidian',
   -- require 'plugins.lint',
