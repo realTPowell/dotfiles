@@ -1,6 +1,6 @@
 export EDITOR=nvim
 export TERMINAL="wezterm"
-export BROWSER="firefox"
+export BROWSER="zen"
 
 
 # Honestly not sure what auto-generated this .bashrc, but it was already there when I cam to sort this out?
@@ -103,6 +103,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias oo="cd ~/Documents/TRPMain && nvim"
+alias td="nvim -c Td"  # opens directly to the todo-list plugin
 
 # old aliases from using NixOS
 # alias nrs="nixos-rebuild switch --flake ~/dotfiles"
@@ -144,4 +145,8 @@ fi
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/home/trp/.local/bin/uv:/home/trp/.local/bin/uvx:/usr/local/go/bin:$BUN_INSTALL/bin:$PATH"
+
+. "$HOME/.local/bin/env"
+
+eval "$(direnv hook bash)"
